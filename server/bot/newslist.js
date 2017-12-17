@@ -314,8 +314,7 @@ const newsList = [
     name: 'Wired',
     url: 'https://www.wired.com/'
   }
-
-]
+];
 
 module.exports = {
   newsList: newsList

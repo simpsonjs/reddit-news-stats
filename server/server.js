@@ -1,8 +1,7 @@
 const path = require('path');
 const express = require('express');
-const api = require('./api');
-const connection = require('./db');
-const startBot = require('./bot')
+const router = require('./router');
+const bot = require('./bot/bot');
 
 const app = express();
 
@@ -11,11 +10,11 @@ const publicPath = path.join(__dirname, '../public');
 
 app.use(express.static(publicPath));
 
-setInterval (() => {
-  startBot(connection);
-}, 3000);
+router(app);
 
-api(app, connection);
+setInterval(() => {
+  bot();
+}, 5000);
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
